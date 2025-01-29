@@ -18,6 +18,15 @@ public class Aples {
         System.out.println("-".repeat(length));
     }
 
+    public static void printList(String[] list) {
+        int index = 0;
+        System.out.println("-".repeat(50));
+        while (list[index] != null) {
+            System.out.println((index + 1) + ". " + list[index]);
+            index += 1;
+        }
+        System.out.println("-".repeat(50));
+    }
     public static void main(String[] args) {
         /*String logo =
                   " ____        _        \n"
@@ -29,6 +38,7 @@ public class Aples {
 
 
         String[] list = new String[100];
+        int itemIndex = 0;
         int length = 50; // Length of the horizontal line
         printGreeting();
 
@@ -40,10 +50,15 @@ public class Aples {
             if (isBye) {
                 printBye();
                 break;
+            } else if (line.equals("list") || line.equals("List")){
+                printList(list);
+            } else {
+                list[itemIndex] = line;
+                System.out.println("-".repeat(50));
+                System.out.println("added: " + line);
+                System.out.println("-".repeat(50));
+                itemIndex += 1;
             }
-            System.out.println("-".repeat(50));
-            System.out.println(line);
-            System.out.println("-".repeat(50));
         }
     }
 }
