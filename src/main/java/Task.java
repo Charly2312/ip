@@ -4,7 +4,10 @@ public class Task {
 
     public Task(String task) {
         this.description = task;
-        this.isDone = false;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void markDone() {
@@ -19,7 +22,9 @@ public class Task {
         return (isDone ? "[X] " : "[ ] ");
     }
 
-    public String getDescription() {
-        return description;
+    @Override
+    public String toString() {
+        return getSign() + description;
     }
+
 }
