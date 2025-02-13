@@ -1,19 +1,21 @@
+package Aples.Print;
+
+import Aples.Tasks.Task;
+
 public class Print {
 
     public static final int LINE_DASH_LENGTH = 50;
 
     public static void printBye() {
-        int length = LINE_DASH_LENGTH; // Length of the horizontal line
-        System.out.println("-".repeat(length));
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
         System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("-".repeat(length));
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
     public static void printGreeting() {
-        int length = LINE_DASH_LENGTH; // Length of the horizontal line
         System.out.println("Hello! I'm Aples");
         System.out.println("What can I do for you?");
-        System.out.println("-".repeat(length));
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
     public static void printList(Task[] list) {
@@ -75,6 +77,18 @@ public class Print {
     public static void askRefill() {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
         System.out.println("Please key in a task in either todo/deadline/event category :)");
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+    }
+
+    public static void todoError() {
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+        System.out.println("There is nothing to-do:( Please input todo with a description.");
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+    }
+
+    public static void deadlineError() {
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+        System.out.println("I can only say by-by:( Please input deadline with a description.");
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 }

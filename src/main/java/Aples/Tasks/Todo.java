@@ -1,7 +1,10 @@
+package Aples.Tasks;
+
+
 public class Todo extends Task {
 
-    public Todo(String task) {
-        super(task);
+    public Todo(String description) {
+        super(description);
     }
 
     @Override

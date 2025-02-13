@@ -1,6 +1,9 @@
-import org.w3c.dom.ls.LSInput;
+import Aples.Print.Print;
+import Aples.Tasks.Deadline;
+import Aples.Tasks.Event;
+import Aples.Tasks.Task;
+import Aples.Tasks.Todo;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Aples {
@@ -9,26 +12,36 @@ public class Aples {
     public static final int LINE_DASH_LENGTH = 50;
 
     public static void handleTodoTask(String line, Task[] list, int itemIndex) {
-        String description = line.substring(5); //take out the description without the category word
-        list[itemIndex] = new Todo(description);
-        Print.echoTask(list[itemIndex], itemIndex + 1);
+        try {
+            String description = line.substring(5);
+            list[itemIndex] = new Todo(description);
+            Print.echoTask(list[itemIndex], itemIndex + 1);
+        } catch (IndexOutOfBoundsException e) { //take out the description without the category word
+            Print.todoError();
+        }
     }
 
     public static void handleDeadlineTask(String line, Task[] list, int itemIndex) {
-        if (line.contains("/by")) {
-            int byPosition = line.indexOf("/by");
-            String description = line.substring(9, byPosition);
-            String deadline = line.substring(byPosition + 4);
-            list[itemIndex] = new Deadline(description, deadline);
-            Print.echoTask(list[itemIndex], itemIndex + 1);
-        } else {
-            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-            System.out.println("Please key in a Deadline task with the keyword '/by'");
-            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-            String newLine;
-            Scanner in = new Scanner(System.in);
-            newLine = in.nextLine();
-            handleDeadlineTask(newLine, list, itemIndex);
+        try {
+            //check if there's something after deadline
+            String statement = line.substring(9);
+            if (statement.contains("/by")) {
+                int byPosition = line.indexOf("/by");
+                String description = line.substring(9, byPosition);
+                String deadline = line.substring(byPosition + 4);
+                list[itemIndex] = new Deadline(description, deadline);
+                Print.echoTask(list[itemIndex], itemIndex + 1);
+            } else {
+                System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+                System.out.println("Please key in a Deadline task with the keyword '/by'");
+                System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+                String newLine;
+                Scanner in = new Scanner(System.in);
+                newLine = in.nextLine();
+                handleDeadlineTask(newLine, list, itemIndex);
+            }
+        } catch (IndexOutOfBoundsException e) { //take out the description without the category word
+            Print.deadlineError();
         }
     }
 
@@ -53,23 +66,21 @@ public class Aples {
     }
 
     public static void main(String[] args) {
-        String logo =
-                "                                               \n" +
-                " █████╗ ██████╗ ██╗     ███████╗███████╗       \n" +
-                "██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝       \n" +
-                "███████║██████╔╝██║     █████╗  ███████╗       \n" +
-                "██╔══██║██╔═══╝ ██║     ██╔══╝  ╚════██║       \n" +
-                "██║  ██║██║     ███████╗███████╗███████║       \n" +
-                "╚═╝  ╚═╝╚═╝     ╚══════╝╚══════╝╚══════╝       \n" +
-                "    Aples chatbot at your service              \n";
-        System.out.println(logo);
+        /*String logo =
+                "                                \n" +
+                "    ___    ____  __    ____  ___ \n " +
+                "   /__ | (  _ \(  )  ( ___)/ __) \n " +
+                "  /(__)| |___/ )(__  )__) \__ \ \n " +
+                " (__)(__)|__)  (____)(____)(___/ \n " +
+                "    Aples chatbot at your service   \n";
+        System.out.println(logo);*/
         Task[] list = new Task[MAX_ENTRIES]; //make an array of class type: Task
         int itemIndex = 0; //index of the item to be added to the list
         Print.printGreeting();
 
+        String line;
+        Scanner in = new Scanner(System.in); //needs to be outside of the loop to ensure the automated test runs
         while (true) {
-            String line;
-            Scanner in = new Scanner(System.in);
             line = in.nextLine();
             boolean isBye = line.contains("bye") || line.contains("Bye");
             if (isBye) {
