@@ -10,10 +10,9 @@ public class Print {
     }
 
     public static void printGreeting() {
-        int length = LINE_DASH_LENGTH; // Length of the horizontal line
         System.out.println("Hello! I'm Aples");
         System.out.println("What can I do for you?");
-        System.out.println("-".repeat(length));
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
     public static void printList(Task[] list) {
