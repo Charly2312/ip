@@ -2,6 +2,8 @@ package Aples.Print;
 
 import Aples.Tasks.Task;
 
+import java.util.ArrayList;
+
 public class Print {
 
     public static final int LINE_DASH_LENGTH = 50;
@@ -18,25 +20,25 @@ public class Print {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
-    public static void printList(Task[] list) {
+    public static void printList(ArrayList<Task> list) {
         int index = 0;
         System.out.println("-".repeat(LINE_DASH_LENGTH));
-        while (list[index] != null) {
-            System.out.println((index + 1) + ". " + list[index].toString());
+        while (index < list.size()) {
+            System.out.println((index + 1) + ". " + list.get(index).toString());
             index += 1;
         }
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
-    public static void markBox(String line, Task[] list) {
+    public static void markBox(String line, ArrayList<Task> list) {
         String[] words = line.split(" ");
         int taskIndex = Integer.parseInt(words[1]);
-        if (list[taskIndex - 1] != null) {
+        if (list.get(taskIndex - 1) != null) {
             System.out.println("-".repeat(LINE_DASH_LENGTH));
             System.out.println("Nice! I've marked this task as done:");
-            list[taskIndex - 1].markDone();
+            list.get(taskIndex - 1).markDone();
             //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
-            System.out.println("  " + list[taskIndex - 1].toString());
+            System.out.println("  " + list.get(taskIndex - 1).toString());
             System.out.println("-".repeat(LINE_DASH_LENGTH));
         } else {
             System.out.println("-".repeat(LINE_DASH_LENGTH));
@@ -45,15 +47,15 @@ public class Print {
         }
     }
 
-    public static void unmarkBox(String line, Task[] list) {
+    public static void unmarkBox(String line, ArrayList<Task> list) {
         String[] words = line.split(" ");
         int taskIndex = Integer.parseInt(words[1]);
-        if (list[taskIndex - 1] != null) {
+        if (list.get(taskIndex - 1) != null) {
             System.out.println("-".repeat(LINE_DASH_LENGTH));
             System.out.println("Sadness but OK, I've marked this task as not done yet:");
-            list[taskIndex - 1].markNotDone();
+            list.get(taskIndex - 1).markNotDone();
             //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
-            System.out.println("  " + list[taskIndex - 1].toString());
+            System.out.println("  " + list.get(taskIndex - 1).toString());
             System.out.println("-".repeat(LINE_DASH_LENGTH));
         } else {
             System.out.println("-".repeat(LINE_DASH_LENGTH));
@@ -91,4 +93,5 @@ public class Print {
         System.out.println("I can only say by-by:( Please input deadline with a description.");
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
+
 }

@@ -2,12 +2,14 @@ import Aples.Print.Print;
 import Aples.Tasks.*;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Aples {
 
     public static final int MAX_ENTRIES = 100;
     public static final int LINE_DASH_LENGTH = 50;
 
+    public static ArrayList<Task> list = new ArrayList<>();
     public static void main(String[] args) {
         /*String logo =
                 "                                \n" +
@@ -17,7 +19,7 @@ public class Aples {
                 " (__)(__)|__)  (____)(____)(___/ \n " +
                 "    Aples chatbot at your service   \n";
         System.out.println(logo);*/
-        Task[] list = new Task[MAX_ENTRIES]; //make an array of class type: Task
+        //Task[] list = new Task[MAX_ENTRIES]; //make an array of class type: Task
         int itemIndex = 0; //index of the item to be added to the list
         Print.printGreeting();
 
@@ -44,6 +46,9 @@ public class Aples {
             } else if (line.contains("event")) {
                 HandleTask.handleEventTask(line, list, itemIndex);
                 itemIndex += 1;
+            } else if (line.contains("delete")) {
+                HandleTask.deleteTask(line, list);
+                itemIndex -= 1;
             } else {
                 Print.askRefill();
             }
