@@ -1,0 +1,4 @@
+T|0|eat
+T|0|sleep
+D|0|cs |2359
+E|0|nus |3pm |3pm 

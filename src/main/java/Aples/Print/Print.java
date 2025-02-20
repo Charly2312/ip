@@ -2,7 +2,13 @@ package Aples.Print;
 
 import Aples.Tasks.Task;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import static Aples.Tasks.HandleData.copyContents;
+import static Aples.Tasks.HandleData.printFileContents;
+
 
 public class Print {
 
@@ -14,8 +20,15 @@ public class Print {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
-    public static void printGreeting() {
+    public static void printGreeting(ArrayList<Task> list) {
         System.out.println("Hello! I'm Aples");
+        System.out.println("This is where you left of:");
+        try {
+            copyContents(list);
+            printList(list);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, please check your filepath");
+        }
         System.out.println("What can I do for you?");
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
@@ -91,6 +104,12 @@ public class Print {
     public static void deadlineError() {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
         System.out.println("I can only say by-by:( Please input deadline with a description.");
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+    }
+
+    public static void eventError() {
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+        System.out.println("Wheres the start and end:( Please input event with a description.");
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
