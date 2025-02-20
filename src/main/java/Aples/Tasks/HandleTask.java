@@ -10,7 +10,7 @@ public class HandleTask {
         try {
             String description = line.substring(5);
             //System.out.println("this is the desc:" + description);
-            //list.set(itemIndex, new Todo(description));
+            //list.set(itemIndex, new Todo(description)); //for debugging
             list.add(new Todo(description));
             Print.echoTask(list.get(list.size() - 1), list.size());
         } catch (IndexOutOfBoundsException e) { //take out the description without the category word
