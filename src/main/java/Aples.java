@@ -21,7 +21,7 @@ public class Aples {
         System.out.println(logo);*/
         //Task[] list = new Task[MAX_ENTRIES]; //make an array of class type: Task
         int itemIndex = 0; //index of the item to be added to the list
-        Print.printGreeting();
+        Print.printGreeting(list);
 
         String line;
         Scanner in = new Scanner(System.in); //needs to be outside of the loop to ensure the automated test runs
