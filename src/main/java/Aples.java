@@ -1,8 +1,12 @@
 import Aples.Print.Print;
 import Aples.Tasks.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+
+import static Aples.Tasks.HandleData.updateFile;
 
 public class Aples {
 
@@ -30,6 +34,15 @@ public class Aples {
             boolean isBye = line.contains("bye") || line.contains("Bye");
             if (isBye) {
                 Print.printBye();
+                try {
+                    updateFile(list);
+                } catch (IndexOutOfBoundsException e) { //take out the description without the category word
+                    Print.deadlineError();
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found");
+                } catch (IOException e) {
+                    System.out.println("Something went wrong: " + e.getMessage());
+                }
                 break;
             } else if (line.equals("list") || line.equals("List")) {
                 Print.printList(list);

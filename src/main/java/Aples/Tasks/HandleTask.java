@@ -89,11 +89,17 @@ public class HandleTask {
     public static void deleteTask(String line, ArrayList<Task> list) {
         String[] words = line.split(" ");
         int taskIndex = Integer.parseInt(words[1]);
-        System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-        System.out.println("Okais. I have removed this task:");
-        System.out.println(" " + list.get(taskIndex - 1).toString());
-        System.out.println("Now you have " + (list.size() - 1) + " left in the list.");
-        System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-        list.remove(taskIndex - 1);
+        if (taskIndex <= list.size()) {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("Okais. I have removed this task:");
+            System.out.println(" " + list.get(taskIndex - 1).toString());
+            System.out.println("Now you have " + (list.size() - 1) + " left in the list.");
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            list.remove(taskIndex - 1);
+        } else {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("You only have " + list.size() + " task(s) left. Please key in a smaller number");
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        }
     }
 }
