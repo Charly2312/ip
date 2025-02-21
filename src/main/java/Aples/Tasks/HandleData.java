@@ -11,7 +11,7 @@ import java.io.IOException;
 import Aples.Tasks.Deadline.*;
 
 public class HandleData {
-    static String filePath = "src/main/java/Aples/Data/aples.txt";
+    static String filePath = "aples.txt";
 
     public static void updateFile(ArrayList<Task> list) throws FileNotFoundException, IOException {
         try { //overwriting the file
@@ -24,7 +24,7 @@ public class HandleData {
                     } else if (task.getClass() == Deadline.class) {
                         f.write("D|1|"+task.getDescription()+"|"+((Deadline) task).getBy()+"\n");
                     } else {
-                        f.write("E|1|"+task.getDescription()+"|"+((Event) task).getStart()+"|"+((Event) task).getStart()+"\n");
+                        f.write("E|1|"+task.getDescription()+"|"+((Event) task).getStart()+"|"+((Event) task).getEnd()+"\n");
                     }
                 }
                 else {
@@ -33,7 +33,7 @@ public class HandleData {
                     } else if (task.getClass() == Deadline.class) {
                         f.write("D|0|"+task.getDescription()+"|"+((Deadline) task).getBy()+"\n");
                     } else {
-                        f.write("E|0|"+task.getDescription()+"|"+((Event) task).getStart()+"|"+((Event) task).getStart()+"\n");
+                        f.write("E|0|"+task.getDescription()+"|"+((Event) task).getStart()+"|"+((Event) task).getEnd()+"\n");
                     }
                 }
                 count++;
@@ -61,10 +61,9 @@ public class HandleData {
         }
     }
 
-    public static void copyContents(ArrayList<Task> list) throws FileNotFoundException {
+    public static void parseIntolist(File file, ArrayList<Task> list) throws FileNotFoundException {
         try {
-            File f = new File(filePath); // create a File for the given file path
-            Scanner s = new Scanner(f); // create a Scanner using the File as the source
+            Scanner s = new Scanner(file); // create a Scanner using the File as the source
             while (s.hasNext()) {
                 String taskFromFile = s.nextLine();
                 String[] words = taskFromFile.split("\\|");
@@ -100,20 +99,25 @@ public class HandleData {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + filePath);
+        } catch (IOException e) {
+            System.out.println("File " + filePath + "cannot be read");
         }
     }
 
-    /*
-    private static void writeToFile(String textToAdd) throws IOException {
-        try {
-            //FileWriter fw = new FileWriter(filePath, true); // create a FileWriter in append mode
-            FileWriter fw = new FileWriter(filePath);
-            fw.write(textToAdd + "\n");
-            fw.close();
-        } catch (IOException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
+    public static void copyContents(ArrayList<Task> list) throws FileNotFoundException {
+        File f = new File(filePath);
+        if (f.exists() && !f.isDirectory()) {
+            File file = new File(filePath); // create a File for the given file path
+            parseIntolist(file, list);
+        } else {
+            try {
+                File file = new File(filePath);
+                file.createNewFile();
+            } catch (IOException e) {
+                System.out.println("File " + filePath + " cannot be created!");
+            }
         }
-    }*/
+    }
+
+
 }
