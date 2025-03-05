@@ -3,6 +3,9 @@ import Aples.Print.Print;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
@@ -82,7 +85,9 @@ public class HandleData {
                         list.get(list.size() - 1).markNotDone();
                     }
                 } else if (words[0].equals("D")) {
-                    list.add(new Deadline(words[2], words[3]));
+                    String[] deadlineArray = words[3].split("T");
+                    String deadline = deadlineArray[0] + " " + deadlineArray[1];
+                    list.add(new Deadline(words[2], LocalDateTime.parse(deadline, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
                     if (words[1].equals("1")) {
                         list.get(list.size() - 1).markDone();
                     } else {
