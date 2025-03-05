@@ -2,3 +2,5 @@ T|0|eat
 T|1|sleep
 E|0|nus |3 |6pm
 D|1|cs |2359pm
+T|0|hi
+E|1|sleep |12am |8am

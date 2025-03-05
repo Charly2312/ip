@@ -63,14 +63,12 @@ public class HandleData {
 
     public static void parseIntolist(File file, ArrayList<Task> list) throws FileNotFoundException {
         try {
-            Scanner s = new Scanner(file); // create a Scanner using the File as the source
+            // create a Scanner using the File as the source
+            Scanner s = new Scanner(file);
             while (s.hasNext()) {
                 String taskFromFile = s.nextLine();
                 String[] words = taskFromFile.split("\\|");
-                //[0] is type, [1] is unmarked/marked, [2] is description
-                //System.out.println(words[0] + ", " + words[1] + ", " + words[2]);
 
-                //System.out.println(words.length);
                 if (words.length < 3) {
                     System.out.println("Skipping invalid task: " + taskFromFile);
                     continue; //move on to the next task
