@@ -119,11 +119,21 @@ public class HandleTask {
         }
     }
 
-    public static void findKeywordInTask(String line, Arraylist<Task> list) {
-        ArrayList<Task> result = new ArrayList<>();
-        String keyword = 
-        for (Task task: list) {
-            if (task.getDescription().contains(""))
+    public static void findKeywordInTask(String line, ArrayList<Task> list) {
+        try {
+            ArrayList<Task> tasksWithKeyword = new ArrayList<>();
+            String keyword = Parser.findKeyword(line);
+            for (Task task: list) {
+                if (task.getDescription().contains(keyword)) {
+                    tasksWithKeyword.add(task);
+                }
+            }
+            Print.printList(tasksWithKeyword);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("You are looking at emptiness");
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
         }
+
     }
 }
