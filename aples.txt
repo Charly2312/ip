@@ -1,6 +1,7 @@
 T|0|eat
 T|1|sleep
-E|0|nus |3 |6pm
-D|1|cs |2359pm
+E|0|nus |3pm |6pm
 T|0|hi
-E|1|sleep |12am |8am
+E|1|sleep |12pm |8pm
+D|1|2113 ip|2025-03-14T23:59
+D|0|quiz|2024-03-09T12:00
