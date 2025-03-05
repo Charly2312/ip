@@ -1,7 +1,6 @@
 package Aples.Tasks;
 
 import Aples.Print.Print;
-import Aples.Tasks.HandleData;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,14 +10,45 @@ import java.util.Scanner;
 import static Aples.Tasks.HandleData.updateFile;
 
 public class HandleTask {
-    public static void handleTodoTask(String line, ArrayList<Task> list, int itemIndex) {
+    public static void markBox(String line, ArrayList<Task> list) {
+        String[] words = line.split(" ");
+        int taskIndex = Integer.parseInt(words[1]);
+        if (taskIndex <= list.size()) {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("Nice! I've marked this task as done:");
+            list.get(taskIndex - 1).markDone();
+            //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
+            System.out.println("  " + list.get(taskIndex - 1).toString());
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        } else {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("You only have " + list.size() + " task(s) left. Please key in a smaller number");
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        }
+    }
+
+    public static void unmarkBox(String line, ArrayList<Task> list) {
+        String[] words = line.split(" ");
+        int taskIndex = Integer.parseInt(words[1]);
+        if (taskIndex <= list.size()) {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("Sadness but OK, I've marked this task as not done yet:");
+            list.get(taskIndex - 1).markNotDone();
+            //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
+            System.out.println("  " + list.get(taskIndex - 1).toString());
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        } else {
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("You only have " + list.size() + " task(s) left. Please key in a smaller number");
+            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        }
+    }
+    public static void handleTodoTask(String line, ArrayList<Task> list) {
         try {
             String description = line.substring(5);
-            //System.out.println("this is the desc:" + description);
-            //list.set(itemIndex, new Todo(description));
             list.add(new Todo(description));
             Print.echoTask(list.get(list.size() - 1), list.size());
-            updateFile(list);
+            HandleData.updateFile(list);
         } catch (IndexOutOfBoundsException e) { //take out the description without the category word
             Print.todoError();
         } catch (FileNotFoundException e) {
@@ -28,25 +58,18 @@ public class HandleTask {
         }
     }
 
-    public static void handleDeadlineTask(String line, ArrayList<Task> list, int itemIndex) {
+    public static void handleDeadlineTask(String line, ArrayList<Task> list) {
         try {
             //check if there's something after deadline
             String statement = line.substring(9);
             if (statement.contains("/by")) {
-                int byPosition = line.indexOf("/by");
-                String description = line.substring(9, byPosition);
-                String deadline = line.substring(byPosition + 4);
-                list.add(new Deadline(description, deadline));
+                list.add(Parser.parseToDeadline(line));
                 Print.echoTask(list.get(list.size() - 1), list.size());
                 updateFile(list);
             } else {
                 System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
                 System.out.println("Please key in a Deadline task with the keyword '/by'");
                 System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-                String newLine;
-                Scanner in = new Scanner(System.in);
-                newLine = in.nextLine();
-                handleDeadlineTask(newLine, list, itemIndex);
             }
         } catch (IndexOutOfBoundsException e) { //take out the description without the category word
             Print.deadlineError();
@@ -57,25 +80,18 @@ public class HandleTask {
         }
     }
 
-    public static void handleEventTask(String line, ArrayList<Task> list, int itemIndex) {
+    public static void handleEventTask(String line, ArrayList<Task> list) {
         try {
+            //check if there's something after the word 'event'
+            String statement = line.substring(6);
             if (line.contains("/from") && line.contains("/to")) {
-                int fromPosition = line.indexOf("/from");
-                int toPosition = line.indexOf("/to");
-                String description = line.substring(6, fromPosition);
-                String startTime = line.substring(fromPosition + 6, toPosition);
-                String endTime = line.substring(toPosition + 4);
-                list.add(new Event(description, startTime, endTime));
+                list.add(Parser.parseToEvent(line));
                 Print.echoTask(list.get(list.size() - 1), list.size());
                 updateFile(list);
             } else {
                 System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
                 System.out.println("Please key in an Event task with both the keywords '/from' and '/to'");
                 System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
-                String newLine;
-                Scanner in = new Scanner(System.in);
-                newLine = in.nextLine();
-                handleEventTask(newLine, list, itemIndex);
             }
         } catch (IndexOutOfBoundsException e) { //take out the description without the category word
         Print.eventError();
@@ -100,6 +116,14 @@ public class HandleTask {
             System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
             System.out.println("You only have " + list.size() + " task(s) left. Please key in a smaller number");
             System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+        }
+    }
+
+    public static void findKeywordInTask(String line, Arraylist<Task> list) {
+        ArrayList<Task> result = new ArrayList<>();
+        String keyword = 
+        for (Task task: list) {
+            if (task.getDescription().contains(""))
         }
     }
 }

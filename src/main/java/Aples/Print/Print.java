@@ -43,40 +43,6 @@ public class Print {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
-    public static void markBox(String line, ArrayList<Task> list) {
-        String[] words = line.split(" ");
-        int taskIndex = Integer.parseInt(words[1]);
-        if (list.get(taskIndex - 1) != null) {
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-            System.out.println("Nice! I've marked this task as done:");
-            list.get(taskIndex - 1).markDone();
-            //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
-            System.out.println("  " + list.get(taskIndex - 1).toString());
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-        } else {
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-            System.out.println("There are not that many tasks in the list. Please write a smaller number");
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-        }
-    }
-
-    public static void unmarkBox(String line, ArrayList<Task> list) {
-        String[] words = line.split(" ");
-        int taskIndex = Integer.parseInt(words[1]);
-        if (list.get(taskIndex - 1) != null) {
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-            System.out.println("Sadness but OK, I've marked this task as not done yet:");
-            list.get(taskIndex - 1).markNotDone();
-            //System.out.println("  " + list[taskIndex - 1].getSign() + list[taskIndex - 1].getDescription());
-            System.out.println("  " + list.get(taskIndex - 1).toString());
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-        } else {
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-            System.out.println("There are not that many tasks in the list. Please write a smaller number");
-            System.out.println("-".repeat(LINE_DASH_LENGTH));
-        }
-    }
-
     public static void echoTask(Task task, int itemNumber) {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
         System.out.println("Got it. I've added this task:");
