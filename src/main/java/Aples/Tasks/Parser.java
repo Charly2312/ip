@@ -2,6 +2,7 @@ package Aples.Tasks;
 
 public class Parser {
 
+    //parse the String to be then created into a new Deadline task
     public static Deadline parseToDeadline(String line) {
         int byPosition = line.indexOf("/by");
         String description = line.substring(9, byPosition);
@@ -9,6 +10,7 @@ public class Parser {
         return new Deadline(description, deadline);
     }
 
+    //parse the String to be then created into a new Event task
     public static Event parseToEvent(String line) {
         int fromPosition = line.indexOf("/from");
         int toPosition = line.indexOf("/to");
