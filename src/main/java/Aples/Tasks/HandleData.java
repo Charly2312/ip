@@ -104,10 +104,10 @@ public class HandleData {
 
     public static void copyContents(ArrayList<Task> list) throws FileNotFoundException {
         File f = new File(filePath);
-        if (f.exists() && !f.isDirectory()) {
+        if (f.exists() && !f.isDirectory()) { // check if a file exists
             File file = new File(filePath); // create a File for the given file path
             parseIntolist(file, list);
-        } else {
+        } else { // if file does not exist, then we create a new file with that name
             try {
                 File file = new File(filePath);
                 file.createNewFile();
