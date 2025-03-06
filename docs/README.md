@@ -6,7 +6,7 @@
 
 // Product intro goes here
 
-## Adding deadlines
+## Adding a ToDo task
 
 // Describe the action and its outcome.
 
@@ -20,11 +20,34 @@ Example: `keyword (optional arguments)`
 expected output
 ```
 
-## Feature ABC
+## Adding an Event task
 
 // Feature details
 
+// Describe the action and its outcome.
 
-## Feature XYZ
+// Give examples of usage
+
+Example: `keyword (optional arguments)`
+
+// A description of the expected outcome goes here
+
+```
+expected output
+```
+
+## Adding a Deadline Task
 
 // Feature details
+
+// Describe the action and its outcome.
+
+// Give examples of usage
+
+Example: `keyword (optional arguments)`
+
+// A description of the expected outcome goes here
+
+```
+expected output
+```
