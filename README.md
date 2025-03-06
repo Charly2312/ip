@@ -1,6 +1,6 @@
-# Duke project template
+# Aples project template
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+This chatbot project helps to keep track of tasks that a user needs to do. They will be divided into 3 categories: Todo, Event and Deadline. Users can add, delete, list down or find specific tasks in the list. Moreover, the existing tasks will be saved in a .txt file and saved which will be used the next time the file is executed
 
 ## Setting up in Intellij
 
