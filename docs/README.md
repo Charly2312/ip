@@ -20,7 +20,8 @@ What can I do for you?
 ```
 
 Aples is a chatbot built to help manage your tasks! There will be 3 types of task: Todo, Event, Deadline.
-The are several functions to this chatbot: 'add', 'delete', 'mark', 'unmark', 'list' and 'find' 
+The are several functions to this chatbot: 'add', 'delete', 'mark', 'unmark', 'list' and 'find'. 
+Have fun using it!
 
 ## Adding a Todo task
 
