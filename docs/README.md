@@ -1,10 +1,10 @@
 # Aples User Guide
 
-// Update the title above to match the actual product name
+// Aples
 
 // Product screenshot goes here
 
-// Product intro goes here
+// Aples is a chatbot built to help manage your tasks! There will be 3 types of task
 
 ## Adding a ToDo task
 
@@ -51,3 +51,40 @@ Example: `keyword (optional arguments)`
 ```
 expected output
 ```
+
+## Delete a Task
+
+// Feature details
+
+// Describe the action and its outcome.
+
+// Give examples of usage
+
+Example: `keyword (optional arguments)`
+
+// A description of the expected outcome goes here
+
+## Mark or unmark a Task
+
+// Feature details
+
+// Describe the action and its outcome.
+
+// Give examples of usage
+
+Example: `keyword (optional arguments)`
+
+// A description of the expected outcome goes here
+
+## Finding a task
+
+// Feature details
+
+// Describe the action and its outcome.
+
+// Give examples of usage
+
+Example: `keyword (optional arguments)`
+
+// A description of the expected outcome goes here
+
