@@ -1,19 +1,25 @@
 # Aples User Guide
 
-// Aples
+Aples
 
-// ![image](https://github.com/user-attachments/assets/28278503-5fe3-4735-bb92-0ea17dd92ef1)
+![image](https://github.com/user-attachments/assets/28278503-5fe3-4735-bb92-0ea17dd92ef1)
 
-// Aples is a chatbot built to help manage your tasks! There will be 3 types of task: Todo, Event, Deadline.
-// The are several functions to this chatbot: 'add', 'delete', 'mark', 'unmark', 'list' and 'find' 
+Aples is a chatbot built to help manage your tasks! There will be 3 types of task: Todo, Event, Deadline.
+The are several functions to this chatbot: 'add', 'delete', 'mark', 'unmark', 'list' and 'find' 
 
 ## Adding a Todo task
 
-// Adds a Todo task into the list
+Adds a Todo task into the list
 
 Format: `/todo DESCRIPTION`
 
 Example: `/todo sleep` adds the Todo task with DESCRIPTION sleep into the list
+
+Input:
+```
+/todo sleep
+```
+
 Outcome: 
 ```
 --------------------------------------------------
