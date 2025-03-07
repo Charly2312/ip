@@ -123,7 +123,7 @@ list
 Outcome: 
 ```
 --------------------------------------------------
-1. [E][ ] nus (from: 1st April to: 2nd April)
+1. [T][ ] exercise
 2. [E][ ]  go nus (from: 11am to: 1pm)
 3. [E][ ] holiday (from: 1st April to: 2nd April)
 4. [D][ ] assignment (do by: Jan 1 2025 23:59)
