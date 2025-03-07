@@ -1,4 +1,4 @@
-import Aples.Print.Print;
+import Aples.Print.Printer;
 import Aples.Tasks.*;
 
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import static Aples.Tasks.HandleData.updateFile;
+import static Aples.Tasks.DataHandler.updateFile;
 
 public class Aples {
 
@@ -24,7 +24,7 @@ public class Aples {
             "  //      // //       //////// //////// ////////  \n" +
             "                Aples at your service             \n ";
         System.out.println(logo);
-        Print.printGreeting(list);
+        Printer.printGreeting(list);
 
         String line;
         //needs to be outside of the loop to ensure the automated test runs
@@ -33,11 +33,11 @@ public class Aples {
             line = in.nextLine();
             boolean isBye = line.contains("bye") || line.contains("Bye");
             if (isBye) {
-                Print.printBye();
+                Printer.printBye();
                 try {
                     updateFile(list);
                 } catch (IndexOutOfBoundsException e) { //take out the description without the category word
-                    Print.deadlineError();
+                    Printer.deadlineError();
                 } catch (FileNotFoundException e) {
                     System.out.println("File not found");
                 } catch (IOException e) {
@@ -45,23 +45,23 @@ public class Aples {
                 }
                 break;
             } else if (line.equals("list") || line.equals("List")) {
-                Print.printList(list);
+                Printer.printList(list);
             } else if (line.contains("unmark")) {
-                HandleTask.unmarkBox(line, list);
+                TaskHandler.unmarkBox(line, list);
             } else if (line.contains("mark")) {
-                HandleTask.markBox(line, list);
+                TaskHandler.markBox(line, list);
             } else if (line.contains("todo")) {
-                HandleTask.handleTodoTask(line, list);
+                TaskHandler.handleTodoTask(line, list);
             } else if (line.contains("deadline")) {
-                HandleTask.handleDeadlineTask(line, list);
+                TaskHandler.handleDeadlineTask(line, list);
             } else if (line.contains("event")) {
-                HandleTask.handleEventTask(line, list);
+                TaskHandler.handleEventTask(line, list);
             } else if (line.contains("delete")) {
-                HandleTask.deleteTask(line, list);
+                TaskHandler.deleteTask(line, list);
             } else if (line.contains("find")) {
-                HandleTask.findKeywordInTask(line,list);
+                TaskHandler.findKeywordInTask(line,list);
             } else {
-                Print.askRefill();
+                Printer.askRefill();
             }
         }
     }

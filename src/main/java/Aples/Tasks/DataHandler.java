@@ -1,9 +1,8 @@
 package Aples.Tasks;
-import Aples.Print.Print;
+import Aples.Print.Printer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,11 +10,10 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import Aples.Tasks.Deadline.*;
-
-public class HandleData {
+public class DataHandler {
     static String filePath = "aples.txt";
 
+    //Copy contents from the ArrayList and update the txt file
     public static void updateFile(ArrayList<Task> list) throws FileNotFoundException, IOException {
         try { //overwriting the file
             FileWriter f = new FileWriter(filePath); // create a File for the given file path
@@ -42,9 +40,9 @@ public class HandleData {
                 count++;
             }
             f.close();
-            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("-".repeat(Printer.LINE_DASH_LENGTH));
             System.out.println("File updated successfully!");
-            System.out.println("-".repeat(Print.LINE_DASH_LENGTH));
+            System.out.println("-".repeat(Printer.LINE_DASH_LENGTH));
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + filePath);
         } catch (IOException e) {
@@ -52,18 +50,7 @@ public class HandleData {
         }
     }
 
-    public static void printFileContents() throws FileNotFoundException {
-        try {
-            File f = new File(filePath); // create a File for the given file path
-            Scanner s = new Scanner(f); // create a Scanner using the File as the source
-            while (s.hasNext()) {
-                System.out.println(s.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + filePath);
-        }
-    }
-
+    //Parsing every task in the txt file into Todo, Event or Deadline task for ArrayList
     public static void parseIntolist(File file, ArrayList<Task> list) throws FileNotFoundException {
         try {
             // create a Scanner using the File as the source
@@ -107,6 +94,7 @@ public class HandleData {
         }
     }
 
+    //copying the contents from our txt file into the ArrayList (if the file exists)
     public static void copyContents(ArrayList<Task> list) throws FileNotFoundException {
         File f = new File(filePath);
         if (f.exists() && !f.isDirectory()) { // check if a file exists
@@ -121,6 +109,4 @@ public class HandleData {
             }
         }
     }
-
-
 }

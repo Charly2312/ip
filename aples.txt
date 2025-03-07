@@ -1,7 +1,4 @@
-T|0|eat
-T|1|sleep
-E|0|nus |3pm |6pm
-T|0|hi
-E|1|sleep |12pm |8pm
-D|1|2113 ip|2025-03-14T23:59
-D|0|quiz|2024-03-09T12:00
+T|0|exercise
+E|0| go nus |11am |1pm
+E|0|holiday |1st April |2nd April
+D|0|assignment|2025-01-01T23:59

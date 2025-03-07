@@ -3,14 +3,12 @@ package Aples.Print;
 import Aples.Tasks.Task;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import static Aples.Tasks.HandleData.copyContents;
-import static Aples.Tasks.HandleData.printFileContents;
+import static Aples.Tasks.DataHandler.copyContents;
 
 
-public class Print {
+public class Printer {
 
     public static final int LINE_DASH_LENGTH = 50;
 
@@ -76,6 +74,12 @@ public class Print {
     public static void eventError() {
         System.out.println("-".repeat(LINE_DASH_LENGTH));
         System.out.println("Wheres the start and end:( Please input event with a description.");
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+    }
+
+    public static void deleteError() {
+        System.out.println("-".repeat(LINE_DASH_LENGTH));
+        System.out.println("Where is the index :( Please key in delete followed by an index");
         System.out.println("-".repeat(LINE_DASH_LENGTH));
     }
 
