@@ -117,7 +117,7 @@ Example: `list` will list down all the tasks created previously
 
 Input:
 ```
-/list
+list
 ```
 
 Outcome: 
